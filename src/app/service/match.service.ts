@@ -25,6 +25,10 @@ export class MatchService {
     console.log(this.Teams);
   }
 
+  getTeamsStats() {
+    return this.Teams;
+  } 
+
   addGoal(team) {
     for (let current_team in this.Teams) {
       if (this.Teams[current_team]['team_name'] == team) {
@@ -72,12 +76,17 @@ export class MatchService {
     console.log(this.Teams);
   }
 
+  // FIX THE LOGIC !!!!
   finishMatch() {
     let max_goals = 0;
     for (let current_team in this.Teams) {
       if (this.Teams[current_team]['goals'] > max_goals) {
-        max_goals = this.Teams[current_team]['goals'];
-        this.Teams[current_team]['match_status'] = 'won';
+          max_goals = this.Teams[current_team]['goals'];
+          this.Teams[current_team]['match_status'] = 'won';
+      } else if(this.Teams[current_team]['goals'] == max_goals) {
+          this.Teams[current_team]['match_status'] === 'draw';
+      } else {
+          this.Teams[current_team]['match_status'] = 'lost';
       }
     }
     console.log(this.Teams);
@@ -87,7 +96,9 @@ export class MatchService {
     for (let current_team in this.Teams) {
       if (this.Teams[current_team]['match_status'] == 'won') {
         return this.Teams[current_team]['team_name'];
-      }
+      } else if (this.Teams[current_team]['match_status'] == 'draw') {
+        return this.Teams;
+      } 
     }
     console.log(this.Teams);
   }

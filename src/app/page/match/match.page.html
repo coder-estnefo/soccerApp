@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>match</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button (click)="setTeams('lenovo fc', 'samsung fc')">set</ion-button>
+  <hr>
+  <ion-button (click)="addGoal('lenovo fc')">plus</ion-button>
+  <ion-button (click)="deleteGoal('lenovo fc')">minus</ion-button>
+  <ion-button (click)="yellowCard('lenovo fc')">yellow</ion-button>
+  <ion-button (click)="redCard('lenovo fc')">red</ion-button>
+  <ion-button (click)="offSide('lenovo fc')">offSide</ion-button>
+  <hr>
+  <ion-button (click)="addGoal('samsung fc')">plus</ion-button>
+  <ion-button (click)="deleteGoal('samsung fc')">minus</ion-button>
+  <ion-button (click)="yellowCard('samsung fc')">yellow</ion-button>
+  <ion-button (click)="redCard('samsung fc')">red</ion-button>
+  <ion-button (click)="offSide('samsung fc')">offSide</ion-button>
+  <hr>
+  <ion-button (click)="reset()">reset</ion-button>
+</ion-content>

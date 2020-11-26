@@ -61,16 +61,16 @@ export class MatchPage implements OnInit {
     this.presentToast(message);
   }
 
-  reset() {
-    this.presentAlertConfirm();
-  }
-
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000
     });
     toast.present();
+  }
+
+  reset() {
+    this.presentAlertConfirm();
   }
 
   async presentAlertConfirm() {

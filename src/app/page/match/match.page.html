@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -14,46 +14,56 @@
 
 <ion-content class="ion-padding">
 
-  <ion-grid class="ion-text-center">
+  <ion-grid *ngIf="match.length > 0" class="ion-text-center ion-text-capitalize">
+    <ion-card>
+      <ion-card-content>
+        <ion-row>
+          <ion-col *ngFor="let team of match">
+            <ion-text>
+              <h3>{{team.team_name}}</h3>
+            </ion-text>
+            <ion-text>
+              <h3 class="score">{{team.goals}}</h3>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        </ion-card-content>
+    </ion-card>
+
     <ion-row>
       <ion-col *ngFor="let team of match">
-        <ion-text>
-          <h3>{{team.team_name}}</h3>
-        </ion-text>
-        <ion-text>
-          <h3>{{team.goals}}</h3>
-        </ion-text>
+        <ion-button expand="block" color="medium" (click)="addGoal(team.team_name)">
+          <ion-icon name="add-circle-sharp"></ion-icon>Goal
+        </ion-button>
+        <ion-button expand="block" color="medium" (click)="deleteGoal(team.team_name)">
+          <ion-icon name="remove-circle-sharp"></ion-icon>Goal
+        </ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col *ngFor="let team of match">
-        <ion-button expand="full" (click)="addGoal(team.team_name)">Add Goal</ion-button>
-        <ion-button expand="full" (click)="deleteGoal(team.team_name)">Remove Goal</ion-button>
+        <ion-button expand="block" color="medium" (click)="yellowCard(team.team_name)">Yellow Card</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col *ngFor="let team of match">
-        <ion-button expand="full" (click)="yellowCard(team.team_name)">Yellow Card</ion-button>
+        <ion-button expand="block" color="medium" (click)="redCard(team.team_name)">Red Card</ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col *ngFor="let team of match">
-        <ion-button expand="full" (click)="redCard(team.team_name)">Red Card</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col *ngFor="let team of match">
-        <ion-button expand="full" (click)="offSide(team.team_name)">Offside</ion-button>
+        <ion-button expand="block" color="medium" (click)="offSide(team.team_name)">
+          <ion-icon name="flag-sharp"></ion-icon>Offside
+        </ion-button>
       </ion-col>
     </ion-row>
     
     <ion-row>
       <ion-col>
-        <ion-button (click)="reset()">Reset</ion-button>
+        <ion-button color="medium" (click)="reset()">Reset</ion-button>
       </ion-col>
     </ion-row>
     

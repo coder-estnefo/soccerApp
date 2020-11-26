@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>setup</ion-title>
+  <ion-toolbar color="light">
+    <ion-title>Setup</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,15 +8,15 @@
 
   <ion-item>
     <ion-label>Team A</ion-label>
-    <ion-input [(ngModel)]="teamA"></ion-input>
+    <ion-input [(ngModel)]="teamA" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Team B</ion-label>
-    <ion-input [(ngModel)]="teamB"></ion-input>
+    <ion-input [(ngModel)]="teamB" required></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="setTeams()">
+  <ion-button expand="block" color="medium" (click)="setTeams()">
     Start Match
   </ion-button>
 

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -15,10 +15,10 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-grid>
+      <ion-grid class="ion-text-capitalize">
 
         <ion-row>
-          <ion-col *ngFor="let team of stats"><ion-text><h3>{{team.team_name}}</h3></ion-text></ion-col>
+          <ion-col *ngFor="let team of stats"><ion-text><strong>{{team.team_name}}</strong></ion-text></ion-col>
         </ion-row>
 
         <ion-row>
@@ -36,6 +36,14 @@
         <ion-row>
           <ion-col *ngFor="let team of stats">Offsides - {{team.offsides}}</ion-col>
         </ion-row>
+
+        <!-- <ion-row>
+          <ion-col>
+            <ion-button color="medium" class="ion-text-center">
+              Start New Match
+            </ion-button>
+          </ion-col>
+        </ion-row> -->
 
       </ion-grid>
     </ion-card-content>

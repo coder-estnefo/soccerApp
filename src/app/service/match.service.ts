@@ -28,7 +28,6 @@ export class MatchService {
         this.Teams.push({'team_name': teamA, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
         this.Teams.push({'team_name': teamB, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
     }
-    console.log(this.Teams);
   }
 
   getTeamsStats() {
@@ -41,7 +40,6 @@ export class MatchService {
         this.Teams[current_team]['goals'] += 1;
       }
     }
-    console.log(this.Teams);
   }
 
   deleteGoal(team) {
@@ -52,7 +50,6 @@ export class MatchService {
         }
       }
     }
-    console.log(this.Teams);
   }
 
   giveYellowCard(team) {
@@ -61,7 +58,6 @@ export class MatchService {
         this.Teams[current_team]['yellow_cards'] += 1;
       }
     }
-    console.log(this.Teams);
   }
 
   giveRedCard(team) {
@@ -85,7 +81,7 @@ export class MatchService {
   finishMatch() {
     if(this.Teams.length > 0){
       this.stats = this.Teams; 
-    
+      
       if (this.Teams[0]['goals'] > this.Teams[1]['goals']) {
           this.results = [this.Teams[0]['team_name']];
       } else if (this.Teams[0]['goals'] == this.Teams[1]['goals']) {
@@ -97,7 +93,6 @@ export class MatchService {
   getWinner() {
     if(this.Teams.length > 0){
       if (this.results.length == 1) {
-          //return this.results[0];
           return 'Winner: ' + this.results[0];
       } else {
           return 'Draw: ' + this.results[0] + ', ' + this.results[1];

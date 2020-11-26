@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatchService } from 'src/app/service/match.service';
 
 @Component({
@@ -8,13 +9,20 @@ import { MatchService } from 'src/app/service/match.service';
 })
 export class SetupPage implements OnInit {
 
-  constructor(private matchService: MatchService) { }
+  teamA; 
+  teamB;
+
+  constructor(
+    private matchService: MatchService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
-  setTeams(teamA, teamB) {
-    this.matchService.setTeams(teamA, teamB);
+  setTeams() {
+    this.matchService.setTeams(this.teamA, this.teamB);
+    this.router.navigate(['match']);
   }
 
 }

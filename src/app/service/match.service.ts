@@ -6,7 +6,6 @@ export interface SoccerTeam {
   yellow_cards: number;
   red_cards: number;
   offsides: number;
-  match_status: string;
 }
 
 @Injectable({
@@ -15,13 +14,20 @@ export interface SoccerTeam {
 export class MatchService {
 
   Teams: SoccerTeam[] = [];
+  stats;
+  results;
 
   constructor() { }
 
   setTeams(teamA, teamB) {
-    this.Teams.push({'team_name': teamA, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0, 'match_status': 'in-progress'});
-    this.Teams.push({'team_name': teamB, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0, 'match_status': 'in-progress'});
-
+    if (this.Teams.length > 0) {
+        this.Teams = [];
+        this.Teams.push({'team_name': teamA, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
+        this.Teams.push({'team_name': teamB, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
+    } else {
+        this.Teams.push({'team_name': teamA, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
+        this.Teams.push({'team_name': teamB, 'goals': 0, 'yellow_cards': 0, 'red_cards': 0, 'offsides': 0});
+    }
     console.log(this.Teams);
   }
 
@@ -76,31 +82,27 @@ export class MatchService {
     console.log(this.Teams);
   }
 
-  // FIX THE LOGIC !!!!
   finishMatch() {
-    let max_goals = 0;
-    for (let current_team in this.Teams) {
-      if (this.Teams[current_team]['goals'] > max_goals) {
-          max_goals = this.Teams[current_team]['goals'];
-          this.Teams[current_team]['match_status'] = 'won';
-      } else if(this.Teams[current_team]['goals'] == max_goals) {
-          this.Teams[current_team]['match_status'] === 'draw';
-      } else {
-          this.Teams[current_team]['match_status'] = 'lost';
+    if(this.Teams.length > 0){
+      this.stats = this.Teams; 
+    
+      if (this.Teams[0]['goals'] > this.Teams[1]['goals']) {
+          this.results = [this.Teams[0]['team_name']];
+      } else if (this.Teams[0]['goals'] == this.Teams[1]['goals']) {
+          this.results = [this.Teams[0]['team_name'], this.Teams[1]['team_name']];
       }
     }
-    console.log(this.Teams);
   }
 
   getWinner() {
-    for (let current_team in this.Teams) {
-      if (this.Teams[current_team]['match_status'] == 'won') {
-        return this.Teams[current_team]['team_name'];
-      } else if (this.Teams[current_team]['match_status'] == 'draw') {
-        return this.Teams;
-      } 
+    if(this.Teams.length > 0){
+      if (this.results.length == 1) {
+          //return this.results[0];
+          return 'Winner: ' + this.results[0];
+      } else {
+          return 'Draw: ' + this.results[0] + ', ' + this.results[1];
+      }
     }
-    console.log(this.Teams);
   }
 
 }

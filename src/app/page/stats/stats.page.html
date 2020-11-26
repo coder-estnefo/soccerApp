@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>stats</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Stats</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Match Statistics</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+
+        <ion-row>
+          <ion-col *ngFor="let team of stats"><ion-text><h3>{{team.team_name}}</h3></ion-text></ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col *ngFor="let team of stats">Goals - {{team.goals}}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col *ngFor="let team of stats">Yellow Cards - {{team.yellow_cards}}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col *ngFor="let team of stats">Red Cards - {{team.red_cards}}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col *ngFor="let team of stats">Offsides - {{team.offsides}}</ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

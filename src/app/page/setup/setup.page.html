@@ -4,6 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label>Team A</ion-label>
+    <ion-input [(ngModel)]="teamA"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Team B</ion-label>
+    <ion-input [(ngModel)]="teamB"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="setTeams()">
+    Start Match
+  </ion-button>
 
 </ion-content>

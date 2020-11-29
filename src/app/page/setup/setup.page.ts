@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MatchService } from 'src/app/service/match.service';
@@ -13,22 +14,27 @@ export class SetupPage implements OnInit {
   teamA; 
   teamB;
 
+  teamsForm: FormGroup;
+
   constructor(
     private matchService: MatchService,
     private router: Router,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.teamsForm = this.formBuilder.group({
+      teamA: ['', Validators.required],
+      teamB: ['', Validators.required]
+    });
   }
 
-  setTeams() {
-    if (this.teamA != '' && this.teamB != '') {
-      this.matchService.setTeams(this.teamA, this.teamB);
-      this.router.navigate(['match']);
-    } else {
-      this.presentAlert();
-    }
+  setTeams(form) {
+    let teamA = form.value.teamA;
+    let teamB = form.value.teamB;
+    this.matchService.setTeams(teamA, teamB);
+    this.router.navigate(['match']);
   }
 
   async presentAlert() {

@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding ion-text-center">
 
   <ion-card>
     <ion-card-header>
@@ -37,13 +37,13 @@
           <ion-col *ngFor="let team of stats">Offsides - {{team.offsides}}</ion-col>
         </ion-row>
 
-        <!-- <ion-row>
+        <ion-row>
           <ion-col>
-            <ion-button color="medium" class="ion-text-center">
+            <ion-button color="medium" class="ion-text-center" (click)="setup()">
               Start New Match
             </ion-button>
           </ion-col>
-        </ion-row> -->
+        </ion-row>
 
       </ion-grid>
     </ion-card-content>

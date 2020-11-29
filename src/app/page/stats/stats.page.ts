@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatchService, SoccerTeam } from 'src/app/service/match.service';
 
 @Component({
@@ -10,7 +11,10 @@ export class StatsPage implements OnInit {
 
   stats: SoccerTeam[] = [];
 
-  constructor(private matchService: MatchService) { }
+  constructor(
+    private matchService: MatchService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getStats();
@@ -18,6 +22,10 @@ export class StatsPage implements OnInit {
 
   getStats() {
     this.stats = this.matchService.getTeamsStats();
+  }
+
+  setup() {
+    this.router.navigate(['setup'])
   }
 
 }

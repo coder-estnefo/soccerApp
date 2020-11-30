@@ -86,7 +86,7 @@ export class MatchService {
           this.results = [this.Teams[0]['team_name']];
       } else if (this.Teams[1]['goals'] > this.Teams[0]['goals']) {
           this.results = [this.Teams[1]['team_name']];
-      } else if (this.Teams[0]['goals'] == this.Teams[1]['goals']) {
+      } else {
           this.results = [this.Teams[0]['team_name'], this.Teams[1]['team_name']];
       }
     }
